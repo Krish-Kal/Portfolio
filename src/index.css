@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+/* -------------------- PROFESSIONAL ARCADE DARK BACKGROUND -------------------- */
+body {
+  background: linear-gradient(
+    -45deg,
+    #00030a,
+    #00122a,
+    #051730,
+    #00030a
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 30s ease infinite;
+
+  min-height: 100vh;
+  color: white;
+  position: relative;
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+
+  padding-bottom: 40px; 
+}
+
+/* -------------------- GRADIENT ANIMATION -------------------- */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* -------------------- SOFT RADIAL GLOWS -------------------- */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  filter: blur(160px);
+  z-index: -1;
+  opacity: 0.35;
+}
+
+body::before {
+  background: #00aaff; /* subtle blue glow for arcade vibe */
+  top: -250px;
+  left: -250px;
+}
+
+body::after {
+  background: #5c1fff; /* soft neon purple glow */
+  bottom: -250px;
+  right: -250px;
+}
+
+/* -------------------- STARS EFFECT (minimal retro dots) -------------------- */
+body::before {
+  box-shadow: 
+    100px 200px #00aaff,
+    300px 150px #00d4ff,
+    500px 400px #00bfff,
+    600px 50px #00c4ff,
+    200px 500px #00a0ff,
+    350px 350px #ff66cc,  /* subtle neon pink accent */
+    150px 150px #aa66ff;  /* subtle neon purple accent */
+}
+
+body::after {
+  box-shadow:
+    50px 100px #001f4d,
+    400px 300px #002b5c,
+    600px 200px #003366,
+    700px 500px #001f4d,
+    150px 400px #002b5c,
+    250px 250px #ff78cc; /* soft pink accent in background */
+}
+
+/* -------------------- SMOOTH SCROLL -------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* -------------------- OPTIONAL: subtle overlay -------------------- */
+body::after {
+  mix-blend-mode: screen; /* adds depth and blending without harsh colors */
+}
+
+/* -------------------- TABLET AND MOBILE-FRIENDLY ADJUSTMENTS -------------------- */
+@media (max-width: 1024px) {
+  /* Tablet / iPad */
+  body::before,
+  body::after {
+    width: 550px;       /* slightly bigger for better fill */
+    height: 550px;
+    filter: blur(150px);
+    opacity: 0.32;
+  }
+
+  body::before {
+    top: -200px;
+    left: -200px;
+    box-shadow: 
+      90px 180px #00aaff,
+      270px 135px #00d4ff,
+      450px 360px #00bfff,
+      540px 45px #00c4ff,
+      180px 450px #00a0ff,
+      315px 315px #ff66cc,
+      135px 135px #aa66ff;
+  }
+
+  body::after {
+    bottom: -200px;
+    right: -200px;
+    box-shadow:
+      36px 72px #001f4d,
+      360px 270px #002b5c,
+      540px 180px #003366,
+      630px 450px #001f4d,
+      135px 360px #002b5c,
+      225px 225px #ff78cc;
+  }
+
+  body {
+    padding-bottom: 25px; /* reduce large bottom gap */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile phones */
+  body::before,
+  body::after {
+    width: 400px;
+    height: 400px;
+    filter: blur(120px);
+    opacity: 0.25;
+  }
+
+  body::before {
+    top: -150px;
+    left: -150px;
+    box-shadow: 
+      60px 120px #00aaff,
+      180px 90px #00d4ff,
+      300px 320px #00bfff,
+      360px 40px #00c4ff,
+      120px 300px #00a0ff,
+      210px 210px #ff66cc,
+      90px 90px #aa66ff;
+  }
+
+  body::after {
+    bottom: -150px;
+    right: -150px;
+    box-shadow:
+      30px 60px #001f4d,
+      240px 180px #002b5c,
+      360px 120px #003366,
+      420px 300px #001f4d,
+      90px 240px #002b5c,
+      150px 150px #ff78cc;
+  }
+
+  body {
+    padding-bottom: 20px;
+  }
+}
