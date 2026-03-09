@@ -1,4 +1,4 @@
-import { RenderCubeTexture } from "@react-three/drei";
+import cppLogo from "../assets/C++.png";
 import { motion } from "framer-motion";
 import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaDatabase, FaLock, FaJava } from "react-icons/fa";
 import { RiVercelFill } from "react-icons/ri";
@@ -14,7 +14,7 @@ function Skills() {
         { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" /> },
         { name: "Python", icon: <FaPython className="text-blue-400" /> },
         { name: "C", icon: <SiC className="text-green-400" /> },
-        { name: "C++", icon: <img src="src/assets/C++.png" alt="C++" className="w-10 h-10 object-contain" /> },
+        { name: "C++", icon: <img src={cppLogo} alt="C++" className="w-10 h-10 object-contain" /> },
       ],
     },
     {
