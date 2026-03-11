@@ -6,7 +6,7 @@ function Home() {
     <div className="relative min-h-screen text-white font-sans">
 
       {/* HERO SECTION */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-10 md:px-20 pt-28 md:pt-32 flex flex-col items-center text-center gap-8 md:gap-10">
+      <section className="max-w-5xl mx-auto px-6 sm:px-10 md:px-20 pt-36 md:pt-40 flex flex-col items-center text-center gap-8 md:gap-10">
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -90,7 +90,7 @@ function Home() {
       </section>
 
       {/* ABOUT SECTION */}
-      <section className="pt-28 sm:pt-32 px-6 sm:px-10 md:px-20 max-w-5xl mx-auto">
+      <section className="pt-28 sm:pt-32 pb-6 px-6 sm:px-10 md:px-20 max-w-5xl mx-auto">
 
         <motion.h2
           initial={{ opacity: 0, y: 25 }}
@@ -125,7 +125,7 @@ function Home() {
       </section>
 
       {/* DEVELOPER IDENTITY STRIP */}
-      <section className="pt-20 sm:pt-24 px-6 sm:px-10 md:px-20 max-w-6xl mx-auto">
+      <section className="pt-20 sm:pt-24 pb-0 px-6 sm:px-10 md:px-20 max-w-6xl mx-auto">
 
         <motion.div
           initial={{ opacity: 0, y: 25 }}

@@ -13,24 +13,51 @@ function Navbar() {
 
   const [showNavbar, setShowNavbar] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+
   const lastScrollY = useRef(0);
+  const ticking = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const updateScrollDirection = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY.current + 5) setShowNavbar(false);
-      else if (currentScrollY < lastScrollY.current - 5) setShowNavbar(true);
+
+      // Always show navbar when near top
+      if (currentScrollY < 80) {
+        setShowNavbar(true);
+      } 
+      // Hide when scrolling down
+      else if (currentScrollY > lastScrollY.current) {
+        setShowNavbar(false);
+      } 
+      // Show when scrolling up
+      else {
+        setShowNavbar(true);
+      }
+
       lastScrollY.current = currentScrollY;
+      ticking.current = false;
     };
+
+    const handleScroll = () => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(updateScrollDirection);
+        ticking.current = true;
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Mobile menu animation variants
   const mobileMenuVariants = {
-    hidden: { opacity: 0, x: 50 },
-    visible: { opacity: 1, x: 0, transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-    exit: { opacity: 0, x: 50 },
+    hidden: { opacity: 0, x: 40 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+    },
+    exit: { opacity: 0, x: 40 },
   };
 
   const mobileLinkVariants = {
@@ -42,11 +69,12 @@ function Navbar() {
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: showNavbar ? 0 : -100, opacity: showNavbar ? 1 : 0 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.35 }}
       className="fixed top-0 w-full z-50 backdrop-blur-xl bg-black/30 border-b border-white/10 shadow-lg"
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center p-4 text-white relative">
-        {/* Logo / Name */}
+
+        {/* Logo */}
         <motion.h1
           whileHover={{ scale: 1.05 }}
           className="text-xl font-bold tracking-wide cursor-pointer 
@@ -55,7 +83,7 @@ function Navbar() {
           Krishna Kalvakolanu
         </motion.h1>
 
-        {/* Desktop Links */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex gap-8 text-sm font-medium">
           {navItems.map((item, index) => (
             <Link
@@ -66,13 +94,16 @@ function Navbar() {
               <span className="group-hover:text-cyan-400 transition duration-300">
                 {item.name}
               </span>
-              <span className="
+
+              <span
+                className="
                 absolute left-0 bottom-[-4px] w-0 h-[2px]
                 bg-cyan-400
                 transition-all duration-300
                 group-hover:w-full
                 shadow-[0_0_8px_#22d3ee]
-              "></span>
+              "
+              ></span>
             </Link>
           ))}
         </div>
@@ -106,7 +137,7 @@ function Navbar() {
                   <Link
                     to={item.path}
                     onClick={() => setMenuOpen(false)}
-                    className="w-full block"
+                    className="block w-full"
                   >
                     {item.name}
                   </Link>
@@ -115,6 +146,7 @@ function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
+
       </div>
     </motion.nav>
   );

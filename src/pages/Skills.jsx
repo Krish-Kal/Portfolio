@@ -93,7 +93,8 @@ function Skills() {
       </motion.h1>
 
       <div className="max-w-5xl mx-auto space-y-10">
-        {/* Full-width first section */}
+
+        {/* Programming Languages */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -101,8 +102,12 @@ function Skills() {
           transition={{ duration: 0.5 }}
           className="p-4 bg-blue-900/20 backdrop-blur-xl border border-blue-400/20 rounded-2xl shadow-md"
         >
-          <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center text-blue-200">{firstSection.title}</h2>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+          <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center text-blue-200">
+            {firstSection.title}
+          </h2>
+
+          {/* Mobile improved */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {firstSection.skills.map((skill, i) => (
               <SkillTile key={i} skill={skill} />
             ))}
@@ -120,8 +125,12 @@ function Skills() {
               transition={{ duration: 0.5, delay: idx * 0.05 }}
               className="p-3 bg-blue-900/20 backdrop-blur-xl border border-blue-400/20 rounded-2xl shadow-md"
             >
-              <h2 className="text-lg md:text-xl font-semibold mb-3 text-center text-blue-200">{section.title}</h2>
-              <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              <h2 className="text-lg md:text-xl font-semibold mb-3 text-center text-blue-200">
+                {section.title}
+              </h2>
+
+              {/* Mobile improved */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {section.skills.map((skill, i) => (
                   <SkillTile key={i} skill={skill} />
                 ))}
@@ -129,6 +138,7 @@ function Skills() {
             </motion.div>
           ))}
         </div>
+
       </div>
     </div>
   );
