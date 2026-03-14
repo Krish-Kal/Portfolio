@@ -72,10 +72,10 @@ function Skills() {
         borderColor: "rgba(0,170,255,0.7)",
       }}
       transition={{ type: "spring", stiffness: 180, damping: 16 }}
-      className="flex items-center gap-3 bg-blue-900/10 backdrop-blur-lg border border-white/10 rounded-2xl p-4 md:p-5 cursor-default transition-colors duration-300"
+      className="flex items-center gap-3 bg-blue-900/10 backdrop-blur-lg border border-white/10 rounded-2xl p-4 md:p-5 cursor-default transition-colors duration-300 break-words"
     >
       <div className="text-2xl md:text-3xl flex-shrink-0">{skill.icon}</div>
-      <span className="font-medium text-gray-200 text-sm md:text-base tracking-wide">{skill.name}</span>
+      <span className="font-medium text-gray-200 text-sm md:text-base tracking-wide break-words">{skill.name}</span>
     </motion.div>
   );
 
@@ -107,30 +107,7 @@ function Skills() {
         ))}
       </div>
 
-      {/* Mobile Left Vertical Navbar */}
-      <div className="fixed flex md:hidden flex-col gap-5 left-4 bottom-1/2 transform translate-y-1/2 z-50">
-        {sections.map((sec, idx) => (
-          <motion.div
-            key={idx}
-            onClick={() => document.getElementById(`section-${idx}`)?.scrollIntoView({ behavior: "smooth" })}
-            className={`group relative w-2 h-5 rounded-full cursor-pointer transition-all duration-300
-              ${activeIndex === idx 
-                ? "bg-blue-400 h-7 shadow-[0_0_12px_#00CFFF]" 
-                : "bg-blue-300/50"
-              }
-            `}
-            whileHover={{ 
-              scale: 1.2, 
-              backgroundColor: "rgba(0, 204, 255, 0.15)", 
-              boxShadow: activeIndex === idx ? "0 0 12px #00CFFF" : "0 0 8px #00CFFF"
-            }}
-          >
-            <span className="absolute left-7 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md text-gray-200 text-[10px] font-medium px-2 py-[1px] rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              {sec.title}
-            </span>
-          </motion.div>
-        ))}
-      </div>
+
 
       {/* Main Skills Content */}
       <div className="flex-1 max-w-5xl mx-auto space-y-10 sm:space-y-12">
@@ -155,7 +132,7 @@ function Skills() {
             <h2 className="text-sm sm:text-base md:text-lg font-semibold text-blue-200 border-l-4 border-blue-400 pl-3 uppercase tracking-wide">
               {section.title}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-3">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-3">
               {section.skills.map((skill, i) => (
                 <SkillCard key={i} skill={skill} />
               ))}
