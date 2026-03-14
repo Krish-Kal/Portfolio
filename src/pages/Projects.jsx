@@ -18,7 +18,7 @@ const projects = [
       "A modern portfolio with smooth transitions and professional UI.",
     github: "https://github.com/Krish-Kal/Portfolio",
     demo: "#",
-    tags: ["React.js", "Tailwind CSS", "Three.js", "Framer Motion"],
+    tags: ["React.js", "Tailwind CSS", "Three.js", "Framer Motion", "EmailJS"],
     preview: portfolio,
   },
 ];

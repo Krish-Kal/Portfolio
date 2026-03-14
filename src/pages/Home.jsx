@@ -114,11 +114,7 @@ function Home() {
               hover:text-gray-200 transition duration-300
               drop-shadow-[0_0_6px_rgba(59,130,246,0.25)]"
           >
-            Full Stack Developer focused on building sleek, responsive web
-            applications and writing clean, maintainable code. I enjoy exploring
-            new technologies and refining ideas into smooth, intuitive digital
-            experiences—when I'm not building, I'm usually tweaking something on
-            my PC or chasing the next cool idea to bring to life.
+            Software engineer focused on building sleek, responsive web applications with clean, maintainable code. I enjoy exploring new technologies and turning ideas into smooth, intuitive digital experiences, and understanding how systems work behind the scenes. When I'm not building something, I'm usually tweaking something on my PC or chasing the next idea to bring to life.
           </p>
         </motion.div>
 

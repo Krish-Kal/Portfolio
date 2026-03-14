@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -9,7 +9,10 @@ function Navbar() {
     { name: "Skills", path: "/skills" },
     { name: "Projects", path: "/projects" },
     { name: "Resume", path: "/resume" },
+    { name: "Contact", path: "/contact" },
   ];
+
+  const location = useLocation();
 
   const [showNavbar, setShowNavbar] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,15 +24,12 @@ function Navbar() {
     const updateScrollDirection = () => {
       const currentScrollY = window.scrollY;
 
-      // Always show navbar when near top
       if (currentScrollY < 80) {
         setShowNavbar(true);
       } 
-      // Hide when scrolling down
       else if (currentScrollY > lastScrollY.current) {
         setShowNavbar(false);
       } 
-      // Show when scrolling up
       else {
         setShowNavbar(true);
       }
@@ -77,7 +77,7 @@ function Navbar() {
         {/* Logo */}
         <motion.h1
           whileHover={{ scale: 1.05 }}
-          className="text-xl font-bold tracking-wide cursor-pointer 
+          className="text-base font-semibold tracking-wide cursor-pointer ml-0 md:-ml-4
           bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
         >
           Krishna Kalvakolanu
@@ -85,27 +85,27 @@ function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-8 text-sm font-medium">
-          {navItems.map((item, index) => (
-            <Link
-              key={index}
-              to={item.path}
-              className="relative group transition duration-300"
-            >
-              <span className="group-hover:text-cyan-400 transition duration-300">
-                {item.name}
-              </span>
+          {navItems.map((item, index) => {
+            const isActive = location.pathname === item.path;
 
-              <span
-                className="
-                absolute left-0 bottom-[-4px] w-0 h-[2px]
-                bg-cyan-400
-                transition-all duration-300
-                group-hover:w-full
-                shadow-[0_0_8px_#22d3ee]
-              "
-              ></span>
-            </Link>
-          ))}
+            return (
+              <Link
+                key={index}
+                to={item.path}
+                className="relative group transition duration-300"
+              >
+                <span className="relative text-white transition-colors duration-300 group-hover:text-cyan-400">
+                  {item.name}
+                  {/* Unified subtle underline */}
+                  <span
+                    className={`absolute left-0 -bottom-1 h-[1.0px] w-full bg-cyan-400/70 
+                    origin-left transition-transform duration-300 
+                    ${isActive ? "scale-x-100 shadow-[0_0_4px_rgba(34,211,238,0.5)]" : "scale-x-0 group-hover:scale-x-100"}`}
+                  ></span>
+                </span>
+              </Link>
+            );
+          })}
         </div>
 
         {/* Mobile Hamburger */}
@@ -128,21 +128,25 @@ function Navbar() {
               exit="exit"
               className="absolute top-full right-4 mt-2 w-48 bg-black/80 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg flex flex-col py-4"
             >
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={mobileLinkVariants}
-                  className="px-6 py-2 text-white hover:text-cyan-400 font-medium text-lg"
-                >
-                  <Link
-                    to={item.path}
-                    onClick={() => setMenuOpen(false)}
-                    className="block w-full"
+              {navItems.map((item, index) => {
+                const isActive = location.pathname === item.path;
+
+                return (
+                  <motion.div
+                    key={index}
+                    variants={mobileLinkVariants}
+                    className="px-6 py-2 text-white hover:text-cyan-400 font-medium text-lg"
                   >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      to={item.path}
+                      onClick={() => setMenuOpen(false)}
+                      className="block w-full"
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           )}
         </AnimatePresence>
