@@ -22,7 +22,7 @@ function Home() {
 
           {/* IDENTITY */}
           <p className="text-blue-400 text-xs sm:text-sm md:text-base mb-4 tracking-wide">
-            BE IT • Full Stack Developer • Problem Solver
+            BE IT • Software Engineer • Problem Solver
           </p>
 
           {/* DESCRIPTION */}
@@ -114,12 +114,72 @@ function Home() {
               hover:text-gray-200 transition duration-300
               drop-shadow-[0_0_6px_rgba(59,130,246,0.25)]"
           >
-            Software engineer focused on building sleek, responsive web applications with clean, maintainable code. I enjoy exploring new technologies and turning ideas into smooth, intuitive digital experiences, and understanding how systems work behind the scenes. When I'm not building something, I'm usually tweaking something on my PC or chasing the next idea to bring to life.
+          Software engineer who enjoys building responsive applications with modern technologies. I like exploring new tools, turning ideas into smooth and intuitive digital experiences, and understanding how systems work behind the scenes. When I'm not building something, I'm usually tweaking something on my PC or chasing the next idea to bring to life.
           </p>
         </motion.div>
 
       </section>
 
+{/* CONTACT BOX */}
+<section className="pt-12 sm:pt-14 pb-2 px-6 sm:px-10 md:px-20 max-w-5xl mx-auto">
+
+  <motion.div
+    initial={{ opacity: 0, y: 25 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+    className="
+      relative overflow-hidden
+      rounded-2xl
+      border border-blue-500/15
+      bg-gradient-to-br from-blue-500/[0.07] to-cyan-500/[0.03]
+      backdrop-blur-md
+      p-5 sm:p-6
+      shadow-[0_0_20px_rgba(59,130,246,0.10)]
+    "
+  >
+
+    {/* GLOW */}
+    <div className="
+      absolute inset-0
+      bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.14),transparent_45%)]
+      pointer-events-none
+    " />
+
+    <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+
+      <div>
+        <h3 className="text-lg sm:text-xl font-semibold text-white mb-1">
+          Let’s Build Something Cool
+        </h3>
+
+        <p className="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-lg">
+          Interested in collaborating, discussing ideas, or just connecting? Feel free to reach out.
+        </p>
+      </div>
+
+      <motion.a
+        whileHover={{ scale: 1.04 }}
+        whileTap={{ scale: 0.97 }}
+        href="/contact"
+        className="
+          whitespace-nowrap
+          px-5 py-2.5 rounded-xl
+          text-sm font-medium
+          bg-blue-500/85 text-black
+          shadow-[0_0_16px_rgba(59,130,246,0.28)]
+          hover:shadow-[0_0_24px_rgba(59,130,246,0.45)]
+          transition duration-300
+        "
+      >
+        Contact Me
+      </motion.a>
+
+    </div>
+
+  </motion.div>
+
+</section>
       {/* DEVELOPER IDENTITY STRIP */}
       <section className="pt-20 sm:pt-24 pb-0 px-6 sm:px-10 md:px-20 max-w-6xl mx-auto">
 

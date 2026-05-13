@@ -5,7 +5,7 @@ import {
 } from "react-icons/fa";
 import { RiVercelFill } from "react-icons/ri";
 import { 
-  SiTailwindcss, SiMongodb, SiPostman, SiDocker, SiJavascript, SiNextdotjs, SiRedux, SiFigma, SiAndroidstudio, SiMysql, SiExpress, SiC, SiHtml5, SiCss, SiRender 
+  SiTailwindcss, SiMongodb, SiPostman, SiDocker, SiJavascript, SiNextdotjs, SiRedux, SiFigma, SiAndroidstudio, SiMysql, SiExpress, SiC, SiHtml5, SiCss, SiRender, SiElectron
 } from "react-icons/si";
 import { VscCodeReview } from "react-icons/vsc";
 import cppLogo from "../assets/C++.png";
@@ -26,6 +26,9 @@ function Skills() {
         { name: "HTML", icon: <SiHtml5 className="text-orange-500" /> },
         { name: "CSS", icon: <SiCss className="text-blue-400" /> },
         { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
+      ]},
+    { title: "Frameworks & Libraries", skills: [
+        { name: "Electron", icon: <SiElectron className="text-cyan-400" /> },
       ]},
     { title: "Backend", skills: [
         { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
@@ -92,10 +95,10 @@ function Skills() {
       duration: 0.12,
       ease: "easeOut"
     }}
-    className="flex items-center gap-3 bg-blue-900/10 backdrop-blur-lg border border-white/10 rounded-2xl p-4 md:p-5 cursor-default will-change-transform"
+    className="flex items-center gap-3 bg-blue-900/10 backdrop-blur-lg border border-white/10 rounded-2xl p-4 md:p-4 cursor-default will-change-transform"
   >
-    <div className="text-2xl md:text-3xl">{skill.icon}</div>
-    <span className="font-medium text-gray-200 text-sm md:text-base tracking-wide">
+    <div className="text-2xl md:text-2xl">{skill.icon}</div>
+    <span className="font-medium text-gray-200 text-sm md:text-sm tracking-wide">
       {skill.name}
     </span>
   </motion.div>
@@ -163,12 +166,12 @@ function Skills() {
 
         {/* MAIN CONTENT */}
 
-        <div className="space-y-10 sm:space-y-12 max-w-5xl">
+        <div className="space-y-8 sm:space-y-10 max-w-4xl">
 
           <motion.h1
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center text-blue-400 mb-8 sm:mb-10 tracking-wide"
+            className="text-3xl sm:text-4xl md:text-4xl font-extrabold text-center text-blue-400 mb-6 sm:mb-8 tracking-wide"
           >
             Dev Toolkit
           </motion.h1>
@@ -182,14 +185,14 @@ function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.05 }}
-              className="space-y-4 sm:space-y-5"
+              className="space-y-3 sm:space-y-4"
             >
 
-              <h2 className="text-sm sm:text-base md:text-lg font-semibold text-blue-200 border-l-4 border-blue-400 pl-3 uppercase tracking-wide">
+              <h2 className="text-sm sm:text-base md:text-base font-semibold text-blue-200 border-l-4 border-blue-400 pl-3 uppercase tracking-wide">
                 {section.title}
               </h2>
 
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-3">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-3">
 
                 {section.skills.map((skill, i) => (
                   <SkillCard key={i} skill={skill} />
